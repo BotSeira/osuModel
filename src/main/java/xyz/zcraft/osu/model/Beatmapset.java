@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Objects;
 
 @Data
 public class Beatmapset {
@@ -207,5 +208,12 @@ public class Beatmapset {
 
         @SerializedName("user_id")
         public Long userId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Beatmapset score = (Beatmapset) o;
+        return Objects.equals(id, score.id);
     }
 }

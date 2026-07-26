@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Represents a score returned by the osu! API.
@@ -128,5 +129,12 @@ public class Score {
     public static class Weight {
         private Double percentage;
         private Double pp;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Score score = (Score) o;
+        return Objects.equals(id, score.id);
     }
 }

@@ -3,6 +3,8 @@ package xyz.zcraft.osu.model;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
+import java.util.Objects;
+
 @Data
 public class User {
     @SerializedName("avatar_url")
@@ -94,5 +96,12 @@ public class User {
         public UserExtended.GradeCounts gradeCounts;
 
         public UserExtended.Rank rank;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        User score = (User) o;
+        return Objects.equals(id, score.id);
     }
 }

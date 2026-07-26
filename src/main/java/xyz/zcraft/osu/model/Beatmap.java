@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Objects;
 
 @Data
 public class Beatmap {
@@ -58,5 +59,12 @@ public class Beatmap {
         @SerializedName("tag_id")
         public int tagId;
         public int count;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Beatmap score = (Beatmap) o;
+        return Objects.equals(id, score.id);
     }
 }

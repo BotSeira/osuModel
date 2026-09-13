@@ -47,6 +47,13 @@ public class User {
     @SerializedName("statistics_rulesets")
     private StatisticsRuleset statisticsRulesets;
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        User score = (User) o;
+        return Objects.equals(id, score.id);
+    }
+
     @Data
     public static class StatisticsRuleset {
         private Statistics osu;
@@ -96,12 +103,5 @@ public class User {
         public UserExtended.GradeCounts gradeCounts;
 
         public UserExtended.Rank rank;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        User score = (User) o;
-        return Objects.equals(id, score.id);
     }
 }

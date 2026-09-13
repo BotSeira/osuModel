@@ -31,6 +31,13 @@ public class Beatmap {
     @SerializedName("top_tag_ids")
     public List<UserTagId> topUserTagIds;
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Beatmap score = (Beatmap) o;
+        return Objects.equals(id, score.id);
+    }
+
     @Data
     public static class Covers {
         public String cover;
@@ -59,12 +66,5 @@ public class Beatmap {
         @SerializedName("tag_id")
         public int tagId;
         public int count;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Beatmap score = (Beatmap) o;
-        return Objects.equals(id, score.id);
     }
 }

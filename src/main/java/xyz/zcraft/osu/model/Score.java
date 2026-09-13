@@ -122,6 +122,13 @@ public class Score {
      */
     public Weight weight;
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Score score = (Score) o;
+        return Objects.equals(id, score.id);
+    }
+
     public static class ScoreStatistics extends HashMap<String, Long> {
     }
 
@@ -129,12 +136,5 @@ public class Score {
     public static class Weight {
         private Double percentage;
         private Double pp;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Score score = (Score) o;
-        return Objects.equals(id, score.id);
     }
 }

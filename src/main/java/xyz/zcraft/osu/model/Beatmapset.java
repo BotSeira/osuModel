@@ -147,6 +147,13 @@ public class Beatmapset {
     @Deprecated
     public List<JsonObject> events;
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Beatmapset score = (Beatmapset) o;
+        return Objects.equals(id, score.id);
+    }
+
     @Data
     public static class Description {
         public String description;
@@ -208,12 +215,5 @@ public class Beatmapset {
 
         @SerializedName("user_id")
         public Long userId;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Beatmapset score = (Beatmapset) o;
-        return Objects.equals(id, score.id);
     }
 }

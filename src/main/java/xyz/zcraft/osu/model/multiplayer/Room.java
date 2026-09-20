@@ -1,12 +1,15 @@
-package xyz.zcraft.osu.model;
+package xyz.zcraft.osu.model.multiplayer;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
+import xyz.zcraft.osu.model.BeatmapExtended;
+import xyz.zcraft.osu.model.Mod;
+import xyz.zcraft.osu.model.User;
 
 import java.util.List;
 
 @Data
-public class MultiplayerRoom {
+public class Room {
     private long id;
     private String name;
     private String description;
@@ -25,6 +28,9 @@ public class MultiplayerRoom {
 
     @SerializedName("max_attempts")
     private Integer maxAttempts;
+
+    @SerializedName("max_participants")
+    private Integer maxParticipants;
 
     @SerializedName("participant_count")
     private int participantCount;
@@ -46,7 +52,7 @@ public class MultiplayerRoom {
     private boolean pinned;
 
     @SerializedName("current_playlist_item")
-    private CurrentPlaylistItem currentPlaylistItem;
+    private PlaylistItem currentPlaylistItem;
 
     @SerializedName("difficulty_range")
     private DifficultyRange difficultyRange;
@@ -60,7 +66,7 @@ public class MultiplayerRoom {
     private List<User> recentParticipants;
 
     @Data
-    public static class CurrentPlaylistItem {
+    public static class PlaylistItem {
         private long id;
 
         @SerializedName("room_id")

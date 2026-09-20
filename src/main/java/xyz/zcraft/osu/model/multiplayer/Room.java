@@ -7,6 +7,7 @@ import xyz.zcraft.osu.model.Mod;
 import xyz.zcraft.osu.model.User;
 
 import java.util.List;
+import java.util.Map;
 
 @Data
 public class Room {
@@ -59,6 +60,8 @@ public class Room {
 
     private User host;
 
+    private List<PlaylistItem> playlist;
+
     @SerializedName("playlist_item_stats")
     private PlaylistItemStats playlistItemStats;
 
@@ -100,6 +103,21 @@ public class Room {
         private String playedAt;
 
         private BeatmapExtended beatmap;
+        private Details details;
+
+        public String teamFor(Long userId) {
+            if (userId == null || userId <= 0 || details == null || details.getTeams() == null) {
+                return null;
+            }
+            return details.getTeams().get(String.valueOf(userId));
+        }
+    }
+
+    @Data
+    public static class Details {
+        @SerializedName("room_type")
+        private String roomType;
+        private Map<String, String> teams;
     }
 
     @Data

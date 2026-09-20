@@ -1,13 +1,14 @@
 package xyz.zcraft.osu.model.multiplayer;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import xyz.zcraft.osu.model.BeatmapExtended;
 import xyz.zcraft.osu.model.User;
+import xyz.zcraft.osu.model.Mod;
 
 import java.util.List;
 
+@Data
 public class Match {
     private MatchInfo match;
     private List<MatchEvent> events;
@@ -62,7 +63,7 @@ public class Match {
         @SerializedName("mode_int")
         private int modeInt;
 
-        private List<String> mods;
+        private List<Mod> mods;
 
         @SerializedName("scoring_type")
         private String scoringType;

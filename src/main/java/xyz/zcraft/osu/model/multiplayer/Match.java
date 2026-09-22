@@ -63,7 +63,7 @@ public class Match {
         @SerializedName("mode_int")
         private int modeInt;
 
-        private List<Mod> mods;
+        private List<String> mods;
 
         @SerializedName("scoring_type")
         private String scoringType;

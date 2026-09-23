@@ -293,7 +293,7 @@ public class UserExtended extends User {
         public Season season;
 
         @SerializedName("total_score")
-        public Long totalScore;
+        public Double totalScore;
 
         @Data
         public static class Division {

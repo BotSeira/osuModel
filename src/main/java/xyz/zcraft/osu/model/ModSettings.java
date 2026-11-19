@@ -138,12 +138,23 @@ public final class ModSettings {
                     case "overall_difficulty" -> "OD" + scalar(e.getValue());
                     case "circle_size" -> "CS" + scalar(e.getValue());
                     case "drain_rate" -> "HP" + scalar(e.getValue());
+                    case "minimum_accuracy" -> ">" + percent(e.getValue());
+                    case "restart" -> "true".equals(e.getValue().toString()) ? "↻" : "";
+                    case "adjust_pitch" -> "true".equals(e.getValue().toString()) ? "↝" : "";
                     default -> e.getKey() + "=" + scalar(e.getValue());
                 }).collect(Collectors.joining(" "));
     }
 
     private static String scalar(Object value) {
-        return value instanceof Number ? new BigDecimal(value.toString()).stripTrailingZeros().toPlainString() : value.toString();
+        return value instanceof Number
+                ? new BigDecimal(value.toString()).stripTrailingZeros().toPlainString()
+                : value.toString();
+    }
+
+    private static String percent(Object value) {
+        return value instanceof Number num
+                ? "%.2f%%".formatted(num.doubleValue() * 100)
+                : value.toString();
     }
 
     public static double clockRate(List<Mod> mods) {
